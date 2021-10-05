@@ -30,12 +30,19 @@ jobs:
       - run: npm install
       - run: pwd 
       - run: ls 
-      #- run: docker build . -t node-web-app
-     # - run:  docker container run -itd -p 3600:8080 node-web-app
-     # - run: docker container ls 
-     # - run: sudo apt install curl
-      - run:  i=0
-      - run: echo  hello $i world
-      - run: docker container ls
+      
+      - name: docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+      - name: Build & push docker image 
+        run: |
+            pushDatetime=$(date +%b-%d-%H_%M_%S)
+            docker build . -t ommore/github:$pushDatetime
+            docker push ommore/app:$pushDatetime
+
+
  
       
