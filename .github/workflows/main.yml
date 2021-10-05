@@ -33,6 +33,6 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-          run: echo $tag_name
+#           run: echo $tag_name
  
       
