@@ -37,7 +37,7 @@ jobs:
         run: |
             pushDatetime=$(date +%b-%d-%H_%M_%S)
             docker build . -t ommore/github:$pushDatetime
-            docker push ommore/app:$pushDatetime
+            docker push ommore/github:$pushDatetime
 
 
  
