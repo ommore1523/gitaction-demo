@@ -34,6 +34,7 @@ jobs:
      # - run:  docker container run -itd -p 3600:8080 node-web-app
      # - run: docker container ls 
      # - run: sudo apt install curl
-      - run:  ls
+      - run:  i=0
+      - run: echo $i
  
       
