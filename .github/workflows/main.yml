@@ -21,20 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-      - run: npm install
-      - run: pwd 
-      - run: ls 
-      
-      - name: docker login
-        run:  docker login -u ommore -p Omkar1523@
-      - name: Build & push docker image 
-        run: |
-            pushDatetime=$(date +%b-%d-%H_%M_%S)
-            docker build . -t ommore/github:$pushDatetime
-            docker push ommore/github:$pushDatetime
+      - run: echo hello 
 
 
  
