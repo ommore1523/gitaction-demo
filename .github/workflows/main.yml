@@ -30,6 +30,8 @@ jobs:
       - run: npm install
       - run: pwd 
       - run: ls 
-      - run: docker container ls
+      - run: docker build . -t node-web-app
+      - run:  docker container run -itd -p 3600:8080 node-web-app
+      - run:  curl http://0.0.0.0:3600/
  
       
