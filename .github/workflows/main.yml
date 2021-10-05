@@ -29,4 +29,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm install
       - run: pwd 
+      - run: ls 
+      - run: cd gitaction-demo
+      - run: pwd
       
