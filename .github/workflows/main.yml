@@ -35,6 +35,6 @@ jobs:
      # - run: docker container ls 
      # - run: sudo apt install curl
       - run:  i=0
-      - run: echo $i
+      - run: echo  hello $i world
  
       
