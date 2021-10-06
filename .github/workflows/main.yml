@@ -1,18 +1,38 @@
-name: Releases
+# Name for the demo
+name: CICD
+
+# actions and branch name 
+# on which perform task
 on:
   push:
     branches: [ main ]
-    tags:
-    - '*'
-jobs:
+  pull_request:
+    branches: [ main ]
 
+
+jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '12' ]
+    name: Node ${{ matrix.node }} sample
+    
     steps:
-    - uses: actions/checkout@v2
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "release.tar.gz,foo/*.txt"
-        bodyFile: "body.md"
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
       
+      - name: ghcr login
+      - run: |
+           pushDatetime=$(date +%b-%d-%H_%M_%S)
+           echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
+
+      - name: Build & push docker image 
+      - run: |
+           docker build . -t ghcr.io/ommore1523/nodeapp:pushDatetime
+           docker push ghcr.io/ommore1523/nodeapp:pushDatetime
+
