@@ -29,7 +29,7 @@ jobs:
       - name: ghcr login
         run: |
            pushDatetime=$(date +%b-%d-%H_%M_%S)
-           echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
+           echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
 
       - name: Build & push docker image 
         run: |
