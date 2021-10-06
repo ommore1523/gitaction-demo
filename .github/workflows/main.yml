@@ -35,6 +35,7 @@ jobs:
 
       - name: Build & push docker image 
         run: |
+           pushDatetime=$(date '+%B-%d_%H-%M-%S')
            docker build . -t ghcr.io/ommore1523/nodeapp:$pushDatetime
            docker push ghcr.io/ommore1523/nodeapp:$pushDatetime
 
