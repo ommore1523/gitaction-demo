@@ -26,10 +26,12 @@ jobs:
           node-version: ${{ matrix.node }}
 #       - run: npm install
       
-      - name: ghcr login
+
+      - name: Build the hello-world Docker image
         run: |
-           pushDatetime=$(date +%b-%d-%H_%M_%S)
-           echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
+           echo $CR_PAT | docker login ghcr.io -u ommore1523 --password-stdin
+        env:
+          CR_PAT: ${{ secrets.CR_PAT }}
 
       - name: Build & push docker image 
         run: |
