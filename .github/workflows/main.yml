@@ -26,10 +26,10 @@ jobs:
           node-version: ${{ matrix.node }}
 #       - run: npm install
       
-#       - name: ghcr login
-#       - run: |
-#            pushDatetime=$(date +%b-%d-%H_%M_%S)
-#            echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
+      - name: ghcr login
+      - run: |
+           pushDatetime=$(date +%b-%d-%H_%M_%S)
+           echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
 
 #       - name: Build & push docker image 
 #       - run: |
