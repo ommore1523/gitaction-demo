@@ -27,12 +27,12 @@ jobs:
 #       - run: npm install
       
       - name: ghcr login
-      - run: |
+        run: |
            pushDatetime=$(date +%b-%d-%H_%M_%S)
            echo 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 | docker login ghcr.io -u ommore1523 --password-stdin
 
-#       - name: Build & push docker image 
-#       - run: |
-#            docker build . -t ghcr.io/ommore1523/nodeapp:pushDatetime
-#            docker push ghcr.io/ommore1523/nodeapp:pushDatetime
+      - name: Build & push docker image 
+        run: |
+           docker build . -t ghcr.io/ommore1523/nodeapp:pushDatetime
+           docker push ghcr.io/ommore1523/nodeapp:pushDatetime
 
